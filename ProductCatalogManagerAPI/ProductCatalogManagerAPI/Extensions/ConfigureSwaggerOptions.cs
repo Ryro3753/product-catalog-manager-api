@@ -31,7 +31,7 @@ namespace ProductCatalogManagerAPI
             Configure(options);
         }
 
-        private OpenApiInfo CreateVersionInfo(
+        private static OpenApiInfo CreateVersionInfo(
                 ApiVersionDescription description)
         {
             var info = new OpenApiInfo()

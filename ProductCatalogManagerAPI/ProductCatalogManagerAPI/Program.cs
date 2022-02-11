@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using ProductCatalogManagerAPI.Database;
 using ProductCatalogManagerAPI.Extensions;
+using ProductCatalogManagerAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddVersion();
 builder.Services.AddDbContext<ProductContext>(db => db.UseInMemoryDatabase("ProductDatabase"));
+builder.Services.AddTransient<IProductService, ProductService>();
 
 var app = builder.Build();
 
@@ -23,5 +25,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
