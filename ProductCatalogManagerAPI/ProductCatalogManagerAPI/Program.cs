@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ProductCatalogManagerAPI.Database;
 using ProductCatalogManagerAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,15 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddVersion();
+builder.Services.AddDbContext<ProductContext>(db => db.UseInMemoryDatabase("ProductDatabase"));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.AddSwagger();
 
 app.UseHttpsRedirection();
 
