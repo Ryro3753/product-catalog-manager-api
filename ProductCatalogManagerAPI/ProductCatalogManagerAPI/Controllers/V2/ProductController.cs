@@ -4,11 +4,11 @@ using ProductCatalogManagerAPI.Models;
 using ProductCatalogManagerAPI.Services;
 using System.Net;
 
-namespace ProductCatalogManagerAPI.Controllers.V1
+namespace ProductCatalogManagerAPI.Controllers.V2
 {
     [ApiController]
     [Route("api/v{version:ApiVersion}/[controller]")]
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class ProductController : Controller
     {
         private readonly IProductService _service;

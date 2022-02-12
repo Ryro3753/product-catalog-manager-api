@@ -139,9 +139,52 @@ namespace ProductTest.Unit.Tests
 
             var guid = new Guid();
 
-            var response =
-
             await Assert.ThrowsAsync<ArgumentNullException>(async () => await productService.DeleteProduct(guid));
+
+        }
+
+        [Fact]
+        public async Task UpdateProduct_NotFound()
+        {
+
+            var dbContextMock = new DbContextMock<ProductContext>(DummyOptions);
+            var usersDbSetMock = dbContextMock.CreateDbSetMock(x => x.Products, initialValues);
+
+            var productService = new ProductService(dbContextMock.Object);
+
+            var guid = new Guid();
+            var product = new Product
+            {
+                Id = guid,
+                Code = "000",
+                Name = "Test",
+                Price = 100
+            };
+
+            await Assert.ThrowsAsync<ArgumentNullException>(async () => await productService.UpdateProduct(product));
+        }
+
+        [Fact]
+        public async Task UpdateProduct_OK()
+        {
+
+            var dbContextMock = new DbContextMock<ProductContext>(DummyOptions);
+            var usersDbSetMock = dbContextMock.CreateDbSetMock(x => x.Products, initialValues);
+
+            var productService = new ProductService(dbContextMock.Object);
+
+            var guid = new Guid("0448C4E5-6256-4400-89FB-605A6820EC09");
+            var product = new Product
+            {
+                Id = guid,
+                Code = "666",
+                Name = "Test",
+                Price = 100
+            };
+
+            var response = await productService.UpdateProduct(product);
+
+            Assert.Equal(guid, response);
 
         }
     }
