@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddVersion();
 builder.Services.AddDbContext<ProductContext>(db => db.UseInMemoryDatabase("ProductDatabase"));
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

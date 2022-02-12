@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using ProductCatalogManagerAPI.Models;
 using ProductCatalogManagerAPI.Services;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace ProductCatalogManagerAPI.Controllers.V1
     [ApiVersion("1.0")]
     public class ProductController : Controller
     {
-        readonly IProductService _service;
-        public ProductController(IProductService service)
+        private readonly IProductService _service;
+        private readonly IMapper _mapper;
+        public ProductController(IProductService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -37,9 +40,10 @@ namespace ProductCatalogManagerAPI.Controllers.V1
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Conflict)]
-        public async Task<IActionResult> AddProduct(Product request)
+        public async Task<IActionResult> AddProduct(ProductDTO request)
         {
-            var respond = await _service.AddProduct(request);
+            var product = _mapper.Map<Product>(request);
+            var respond = await _service.AddProduct(product);
             return CreatedAtAction(nameof(GetProduct), new { id = respond }, null);
         }
 
@@ -49,6 +53,16 @@ namespace ProductCatalogManagerAPI.Controllers.V1
         public async Task DeleteProduct(Guid id)
         {
             await _service.DeleteProduct(id);
+        }
+
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Conflict)]
+        public async Task UpdateProduct(ProductDTO request)
+        {
+            var product = _mapper.Map<Product>(request);
+            var respond = await _service.UpdateProduct(product);
         }
     }
 }
