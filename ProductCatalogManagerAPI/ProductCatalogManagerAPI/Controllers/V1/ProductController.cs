@@ -22,7 +22,6 @@ namespace ProductCatalogManagerAPI.Controllers.V1
 
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IEnumerable<Product>> GetProducts()
         {
             return await _service.GetProducts();

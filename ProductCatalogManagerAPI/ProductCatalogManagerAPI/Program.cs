@@ -13,6 +13,7 @@ builder.Services.AddDbContextExtension();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+//Metrics extension
 builder.Services.AddMetricsExtension();
 builder.Host.AddWebTracking();
 
@@ -32,3 +33,9 @@ app.SeedDbContext<ProductContext>();
 app.UseMetrics();
 
 app.Run();
+
+
+public partial class Program
+{
+    // Expose the Program class for use with WebApplicationFactory<T>
+}

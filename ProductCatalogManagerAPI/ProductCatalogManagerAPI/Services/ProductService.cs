@@ -74,7 +74,6 @@ namespace ProductCatalogManagerAPI.Services
             if (product == null)
                 throw new ArgumentNullException();
 
-            product.Code = request.Code;
             product.Name = request.Name;
             product.Price = request.Price;
             product.Picture = request.Picture;
