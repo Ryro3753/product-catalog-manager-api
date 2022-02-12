@@ -10,7 +10,7 @@ namespace ProductCatalogManagerAPI.Services
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProduct(Guid guid);
         Task<Guid> AddProduct(Product request);
-        Task DeleteProduct(Guid id);
+        Task<int> DeleteProduct(Guid id);
         Task<Guid> UpdateProduct(Product request);
     }
     public class ProductService : IProductService
@@ -49,7 +49,7 @@ namespace ProductCatalogManagerAPI.Services
             return request.Id;
         }
 
-        public async Task DeleteProduct(Guid id)
+        public async Task<int> DeleteProduct(Guid id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(i => i.Id == id);
             if (product == null)
@@ -59,12 +59,12 @@ namespace ProductCatalogManagerAPI.Services
 
             try
             {
-                await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException ex)
             {
                 ex.Entries.Single().Reload();
-                await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
             }
         }
 

@@ -5,10 +5,12 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogManagerAPI", "ProductCatalogManagerAPI\ProductCatalogManagerAPI.csproj", "{7751E752-AADD-4BB4-9CED-6BCBD4E86521}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Integration.Tests", "Product.Integration.Tests\Product.Integration.Tests.csproj", "{FBB0F72A-0026-4F16-9A6A-9C7285969C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Integration.Tests", "Product.Integration.Tests\Product.Integration.Tests.csproj", "{FBB0F72A-0026-4F16-9A6A-9C7285969C51}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7751E752-AADD-4BB4-9CED-6BCBD4E86521} = {7751E752-AADD-4BB4-9CED-6BCBD4E86521}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Unit.Tests", "Product.Unit.Tests\Product.Unit.Tests.csproj", "{0299A37A-84A7-4CA9-9608-7D27865905CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{FBB0F72A-0026-4F16-9A6A-9C7285969C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB0F72A-0026-4F16-9A6A-9C7285969C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB0F72A-0026-4F16-9A6A-9C7285969C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0299A37A-84A7-4CA9-9608-7D27865905CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0299A37A-84A7-4CA9-9608-7D27865905CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0299A37A-84A7-4CA9-9608-7D27865905CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0299A37A-84A7-4CA9-9608-7D27865905CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

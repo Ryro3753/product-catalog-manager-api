@@ -49,9 +49,9 @@ namespace ProductCatalogManagerAPI.Controllers.V1
         [HttpDelete("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task DeleteProduct(Guid id)
+        public async Task<int> DeleteProduct(Guid id)
         {
-            await _service.DeleteProduct(id);
+            return await _service.DeleteProduct(id);
         }
 
         [HttpPut]
