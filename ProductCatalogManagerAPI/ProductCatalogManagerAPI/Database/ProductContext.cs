@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductCatalogManagerAPI.Extensions;
 using ProductCatalogManagerAPI.Models;
 
 namespace ProductCatalogManagerAPI.Database
@@ -17,7 +18,13 @@ namespace ProductCatalogManagerAPI.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+           modelBuilder.Entity<Product>().HasData(
+            SeedData.firstProduct,
+            SeedData.secondProduct,
+            SeedData.thirdProduct);
             base.OnModelCreating(modelBuilder);
+
         }
 
 

@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddVersion();
-builder.Services.AddDbContext<ProductContext>(db => db.UseInMemoryDatabase("ProductDatabase"));
+builder.Services.AddDbContextExtension();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -27,5 +27,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.SeedDbContext<ProductContext>();
 
 app.Run();
