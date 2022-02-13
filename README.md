@@ -6,13 +6,19 @@
 
 # Libraries
 EntityFrameworkCore
+
 AutoMapper
+
 XUnit
+
 Moq
+
 AppMetrics
+
 
 # Developer Notes
 I added appmetrics to the project, it can easily run with Prometheus and Grafana, but since this project all about API, no external tool used.
+
 I used In Memory Database for easy use and fast development. On production level, I have to change this with SQL or any other database.
 
 # Metrics
