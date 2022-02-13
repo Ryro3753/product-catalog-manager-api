@@ -37,7 +37,6 @@ namespace ProductCatalogManagerAPI.Controllers.V2
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.Conflict)]
         public async Task<IActionResult> AddProduct(ProductDTO request)
         {
             var product = _mapper.Map<Product>(request);
@@ -56,7 +55,6 @@ namespace ProductCatalogManagerAPI.Controllers.V2
         [HttpPut]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.Conflict)]
         public async Task UpdateProduct(ProductDTO request)
         {
             var product = _mapper.Map<Product>(request);

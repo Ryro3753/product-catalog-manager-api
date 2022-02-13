@@ -7,10 +7,26 @@ namespace ProductCatalogManagerAPI.Services
 {
     public interface IProductService
     {
+        /// <summary>
+        /// Fetch all products
+        /// </summary>
         Task<IEnumerable<Product>> GetProducts();
+
+        /// <summary>
+        /// Fetch specific product
+        /// </summary>
         Task<Product> GetProduct(Guid guid);
+        /// <summary>
+        /// Add new product
+        /// </summary>
         Task<Guid> AddProduct(Product request);
+        /// <summary>
+        /// Delete existing product
+        /// </summary>
         Task<int> DeleteProduct(Guid id);
+        /// <summary>
+        /// Update existing product
+        /// </summary>
         Task<Guid> UpdateProduct(Product request);
     }
     public class ProductService : IProductService

@@ -9,12 +9,14 @@ namespace ProductCatalogManagerAPI.Extensions
     {
         public static IServiceCollection AddDbContextExtension(this IServiceCollection services)
         {
+            //I'm using in memory database for easy use, in production I have to change this with SQL
             services.AddDbContext<ProductContext>(db => db.UseInMemoryDatabase("ProductDatabase"));
             return services;
         }
     }
     public static class SeedData
     {
+        //Seed data values for in memory database
         public static Product firstProduct = new()
         {
             Id = new Guid("0448C4E5-6256-4400-89FB-605A6820EC09"),

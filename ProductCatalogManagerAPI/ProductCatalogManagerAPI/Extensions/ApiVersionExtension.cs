@@ -6,6 +6,7 @@ namespace ProductCatalogManagerAPI.Extensions
     {
         public static IServiceCollection AddVersion(this IServiceCollection services)
         {
+            //Versioning extension, basic implementation for controller versions
             services.AddApiVersioning(opt =>
             {
                 opt.DefaultApiVersion = new ApiVersion(1, 0);

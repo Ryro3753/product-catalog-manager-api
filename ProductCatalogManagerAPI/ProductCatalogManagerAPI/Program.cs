@@ -1,6 +1,5 @@
 using ProductCatalogManagerAPI.Database;
 using ProductCatalogManagerAPI.Extensions;
-using ProductCatalogManagerAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -8,10 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddVersion();
-builder.Services.AddDbContextExtension();
-builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddVersion(); // Version Extension
+builder.Services.AddDbContextExtension(); //DBContext Extension
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddBusinessServices(); // Business Service Extension
 
 //Metrics extension
 builder.Services.AddMetricsExtension();
@@ -28,9 +27,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.SeedDbContext<ProductContext>();
+app.SeedDbContext<ProductContext>(); //Seeding initial data
 
-app.UseMetrics();
+app.UseMetrics(); //For Metrics
 
 app.Run();
 

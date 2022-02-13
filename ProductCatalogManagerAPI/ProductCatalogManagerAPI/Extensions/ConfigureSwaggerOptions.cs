@@ -18,6 +18,7 @@ namespace ProductCatalogManagerAPI
 
         public void Configure(SwaggerGenOptions options)
         {
+            //Fetching all available versions from controllers
             foreach (var description in provider.ApiVersionDescriptions)
             {
                 options.SwaggerDoc(
@@ -34,6 +35,7 @@ namespace ProductCatalogManagerAPI
         private static OpenApiInfo CreateVersionInfo(
                 ApiVersionDescription description)
         {
+            //Swagger info
             var info = new OpenApiInfo()
             {
                 Title = "Product Catalog Manager API",

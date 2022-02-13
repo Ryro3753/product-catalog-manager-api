@@ -6,6 +6,7 @@ namespace ProductCatalogManagerAPI.Extensions
     {
         public static WebApplication AddSwagger(this WebApplication webApp)
         {
+            //Swagger options for versioning
             var apiVersionDescriptionProvider = webApp.Services.GetRequiredService<IApiVersionDescriptionProvider>();
             webApp.UseSwagger();
             webApp.UseSwaggerUI(
